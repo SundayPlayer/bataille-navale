@@ -1,0 +1,9 @@
+{
+  "name": "bataille-navale",
+  "version": "0.1",
+  "description": "projet d'étude pour utiliser socket.io et mongodb",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^2.0.3"
+  }
+}
