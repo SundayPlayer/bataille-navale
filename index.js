@@ -9,8 +9,6 @@ http.listen(3000, function(){
 });
 
 MongoClient.connect("mongodb://localhost/bataille-navale", function(error, db) {
-    if (error) return funcCallback(error);
-
     io.on('connection', function(socket){
         var id = socket.id;
 
