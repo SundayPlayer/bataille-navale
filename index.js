@@ -37,10 +37,10 @@ MongoClient.connect("mongodb://localhost/bataille-navale", function(error, db) {
                     {x: x, y: y},
                     {x: x, y: y, hit: 1}
                 );
-                socket.broadcast.emit({x: x, y: y, hit: 1});
+                socket.broadcast.emit('tir', {x: x, y: y, hit: 1});
             }
             else {
-                socket.broadcast.emit({x: x, y: y, hit: 0});
+                socket.broadcast.emit('tir', {x: x, y: y, hit: 0});
             }
         });
     });
