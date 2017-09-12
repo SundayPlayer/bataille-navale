@@ -27,9 +27,9 @@ MongoClient.connect("mongodb://localhost/bataille-navale", function(error, db) {
         });
 
         socket.on('tir', function(msg){
-            var x = msg[x];
+            var x = msg['data'][1]['tir']['x'];
             console.log('x = ' + x);
-            var y = msg[y];
+            var y = msg['data'][1]['tir']['y'];
             console.log('y = ' + y);
 
             if (db.collection("boat").findOne({x: x, y: y})) {
