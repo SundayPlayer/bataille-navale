@@ -26,16 +26,10 @@ MongoClient.connect("mongodb://localhost/bataille-navale", function(error, db) {
             }
         });
 
-        socket.on('tir', function(msg){
-            var x = msg['tir']['x'];
-            console.log('x = ' + x);
-            var y = msg['tir']['y'];
-            console.log('y = ' + y);
-
-            console.log(db.collection("boat").findOne({x: x, y: y}));
-
-            if (db.collection("boat").findOne({x: x, y: y})) {
-                db.collection("boat").update(
+        db.collection('boat').find({x: x, y: y, hit: 0}).toArray(function(error, boat){
+            console.log(boat);
+            if (boat.length>0) {
+                db.collection('boat').update(
                     {x: x, y: y},
                     {x: x, y: y, hit: 1}
                 );
@@ -46,4 +40,5 @@ MongoClient.connect("mongodb://localhost/bataille-navale", function(error, db) {
             }
         });
     });
+    db.close();
 });
